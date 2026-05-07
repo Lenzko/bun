@@ -1,39 +1,279 @@
-<!--=========================-!>
-Mau custom web ucapan online & tanpa watermark? Order Aja di Deka Tutorial !! (DM IG untuk order)
-+ Youtube: Deka Tutorial
-+ Tiktok: @deka_tutorial
-+ Instagram: deka_tutorial
-<-===========================-->
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Special For You</title>
-    <script src="https://dekatutorial.github.io/flwr/s.js"></script>
-  </head>
-  <body>
-    <div class="open">
-      <i>❤️</i>
-      <span>Klik love nya</span>
-    </div>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pink Bloom Mobile</title>
 
-    <script>
-      ucapan = `Hai Mba Indah
-      Jan marah lagi ya
-      Maapin kemaren 
-      aku salah
-      Jangan dendam...
-      Ngga baik loh
-      “...dan orang-orang yang menahan amarahnya dan memaafkan (kesalahan) orang lain.
-      Allah mencintai orang yang berbuat kebaikan.”
-      (QS. Ali Imran: 134)
-      🌹`;
-      musik = ``;
-      nomorWhatsapp = ``;
-      idTelegram = ``;
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-      DekaTutorial(ucapan, musik, nomorWhatsapp, idTelegram);
-    </script>
-  </body>
+body{
+    overflow:hidden;
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:
+    radial-gradient(circle at top,
+    #ffc4de,
+    #ff75aa 45%,
+    #ff2f77 100%);
+    perspective:1000px;
+    font-family:sans-serif;
+}
+
+/* cahaya */
+.glow{
+    position:absolute;
+    width:90vw;
+    height:90vw;
+    border-radius:50%;
+    background:radial-gradient(circle,
+    rgba(255,255,255,.5),
+    rgba(255,255,255,0));
+    filter:blur(35px);
+    animation:pulse 4s infinite alternate;
+}
+
+@keyframes pulse{
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.15);
+    }
+}
+
+/* bunga utama */
+.flower{
+    position:relative;
+    width:75vw;
+    height:75vw;
+    max-width:340px;
+    max-height:340px;
+
+    transform-style:preserve-3d;
+    animation:rotate 18s linear infinite;
+}
+
+@keyframes rotate{
+    from{
+        transform:rotateY(0deg);
+    }
+
+    to{
+        transform:rotateY(360deg);
+    }
+}
+
+/* kelopak */
+.petal{
+    position:absolute;
+    left:50%;
+    top:50%;
+
+    width:28vw;
+    height:42vw;
+
+    max-width:120px;
+    max-height:180px;
+
+    margin-left:-14vw;
+    margin-top:-34vw;
+
+    background:
+    radial-gradient(circle at 30% 30%,
+    #fff4fa,
+    #ffb3d1 25%,
+    #ff5f9e 65%,
+    #ff2d74 100%);
+
+    border-radius:50% 50% 45% 45%;
+
+    transform-origin:center 34vw;
+
+    box-shadow:
+    inset -10px -15px 25px rgba(255,255,255,.5),
+    inset 15px 15px 25px rgba(255,0,90,.35),
+    0 0 20px rgba(255,80,150,.7);
+
+    filter:drop-shadow(0 0 12px rgba(255,120,180,.8));
+
+    animation:bloom 2.5s ease forwards;
+    opacity:0;
+}
+
+@keyframes bloom{
+    0%{
+        transform:
+        rotate(var(--r))
+        translateZ(-120px)
+        scale(.1);
+
+        opacity:0;
+    }
+
+    100%{
+        transform:
+        rotate(var(--r))
+        translateZ(0)
+        scale(1);
+
+        opacity:1;
+    }
+}
+
+/* tengah bunga */
+.center{
+    position:absolute;
+
+    width:20vw;
+    height:20vw;
+
+    max-width:90px;
+    max-height:90px;
+
+    background:
+    radial-gradient(circle,
+    #fff8c9,
+    #ffd44d 40%,
+    #ffb300 100%);
+
+    border-radius:50%;
+
+    top:50%;
+    left:50%;
+
+    transform:
+    translate(-50%,-50%)
+    translateZ(50px);
+
+    box-shadow:
+    0 0 25px rgba(255,220,120,.9),
+    inset 0 0 15px rgba(255,255,255,.9);
+}
+
+/* partikel */
+.spark{
+    position:absolute;
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+    background:white;
+
+    box-shadow:0 0 10px white;
+
+    animation:float 7s linear infinite;
+
+    opacity:.8;
+}
+
+@keyframes float{
+    from{
+        transform:
+        translateY(100vh)
+        scale(.2);
+
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    to{
+        transform:
+        translateY(-120vh)
+        scale(1);
+
+        opacity:0;
+    }
+}
+
+/* teks */
+.text{
+    position:absolute;
+    bottom:50px;
+
+    width:100%;
+    text-align:center;
+
+    color:white;
+
+    font-size:20px;
+    font-weight:bold;
+
+    text-shadow:
+    0 0 10px rgba(255,255,255,.8),
+    0 0 20px rgba(255,120,180,.9);
+
+    animation:fade 3s infinite alternate;
+}
+
+@keyframes fade{
+    from{
+        opacity:.7;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+/* mobile kecil */
+@media(max-width:480px){
+
+    .text{
+        font-size:18px;
+        bottom:35px;
+    }
+
+    .flower{
+        width:80vw;
+        height:80vw;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="glow"></div>
+
+<div class="flower">
+
+    <div class="petal" style="--r:0deg;"></div>
+    <div class="petal" style="--r:45deg;"></div>
+    <div class="petal" style="--r:90deg;"></div>
+    <div class="petal" style="--r:135deg;"></div>
+    <div class="petal" style="--r:180deg;"></div>
+    <div class="petal" style="--r:225deg;"></div>
+    <div class="petal" style="--r:270deg;"></div>
+    <div class="petal" style="--r:315deg;"></div>
+
+    <div class="center"></div>
+</div>
+
+<div class="text">
+🌸 Beautiful Pink Bloom 🌸
+</div>
+
+<!-- partikel -->
+<div class="spark" style="left:10%; animation-delay:0s;"></div>
+<div class="spark" style="left:25%; animation-delay:2s;"></div>
+<div class="spark" style="left:40%; animation-delay:4s;"></div>
+<div class="spark" style="left:55%; animation-delay:1s;"></div>
+<div class="spark" style="left:70%; animation-delay:5s;"></div>
+<div class="spark" style="left:85%; animation-delay:3s;"></div>
+
+</body>
 </html>
